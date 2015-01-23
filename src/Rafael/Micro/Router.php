@@ -2,8 +2,8 @@
 /**
  * @Author: rafael
  * @Date:   2015-01-19 23:50:09
- * @Last Modified by:   rafael
- * @Last Modified time: 2015-01-23 02:16:40
+ * @Last Modified by:   Administrador
+ * @Last Modified time: 2015-01-23 17:19:47
  */
 
 class Router {
@@ -18,7 +18,7 @@ class Router {
 	 * @param mixed $accion
 	 */
 	public function agregar($ruta, $accion) {
-		// TODO: Implementar metodo para registrar rutas
+		$this->rutas[$ruta] = $accion;
 	}
 
 	/**

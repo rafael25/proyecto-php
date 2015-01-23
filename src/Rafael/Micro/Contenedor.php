@@ -2,61 +2,72 @@
 /**
  * @Author: rafael
  * @Date:   2015-01-23 01:50:58
- * @Last Modified by:   rafael
- * @Last Modified time: 2015-01-23 02:33:35
+ * @Last Modified by:   Administrador
+ * @Last Modified time: 2015-01-23 17:27:06
  */
 
-class Contenerdor implements ArrayAccess {
+class Contenedor implements \ArrayAccess {
 
 	/**
 	 * Contiene los objetos(servicios)
 	 * @var array
 	 */
-	$deposito = array();
+	private $deposito = array();
 
 	/**
 	 * Contiene las funciones constructoras de servicios
 	 * @var array
 	 */
-	$construnctores = array();
+	private $construnctores = array();
 
 	public function set($nombre, callable $closure) {
-		// TODO: Implementar metodo set para registrar un servicio
+		$this->construnctores[$nombre] = $closure;
 	}
 
 	public function get($nombre) {
-		// TODO: Implementar metodo get para obtener un servicio
+		if (!isset($this->deposito[$nombre])) {
+			$closure = $this->construnctores[$nombre];
+			$obj = $closure();
+			$this->deposito[$nombre] = $obj;
+			return $obj;
+		} else {
+			return $this->deposito[$nombre];
+		}
 	}
 
 	public function offsetExists($offset) {
-		// TODO: Implemetar metodo abstracto offsetExists
+		return isset($this->deposito[$offset]);
 	}
 
 	public function offsetGet($offset) {
-		// TODO: Implemetar metodo abstracto offsetGet
+		return isset($this->deposito[$offset]) ? $this->deposito[$offset] : null;
 	}
 
 	public function offsetSet($offset, $value) {
-		// TODO: Implemetar metodo abstracto offsetSet
+		if (is_null($offset)) {
+			$this->deposito[] = $value;
+		} else {
+			$this->deposito[$offset] = $value;
+		}
 	}
 
 	public function offsetUnset($offset) {
-		// TODO: Implemetar metodo abstracto offsetUnset
+		unset($this->deposito[$offset]);
 	}
 
 	public function __get($key) {
-		// TODO: Implemetar metodo magico get
+		return $this->deposito[$key];
 	}
 
 	public function __set($key, $value) {
-		// TODO: Implemetar metodo magico set
+		$this->deposito[$key] = $value;
 	}
 
 	public function __isset($key) {
-		// TODO: Implemetar metodo magico isset
+		return isset($this->deposito[$key]);
 	}
 
 	public function __unset($key) {
-		// TODO: Implemetar metodo magico unset
+		unset($this->deposito[$key]);
 	}
 }
