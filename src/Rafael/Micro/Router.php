@@ -3,7 +3,7 @@
  * @Author: rafael
  * @Date:   2015-01-19 23:50:09
  * @Last Modified by:   Administrador
- * @Last Modified time: 2015-01-23 17:19:47
+ * @Last Modified time: 2015-02-17 15:57:46
  */
 
 class Router {
@@ -18,13 +18,20 @@ class Router {
 	 * @param mixed $accion
 	 */
 	public function agregar($ruta, $accion) {
-		$this->rutas[$ruta] = $accion;
+		$this->rutas[] = new Ruta($ruta, $accion);
 	}
 
 	/**
-	 * @param $ruta
+	 * [resolverUrl description]
+	 * @param  string $url
+	 * @return \Rafael\Micro\Ruta
 	 */
-	public function resolverRuta($ruta) {
-		// TODO: Implementar metodo para resolver la ruta
+	public function resolverUrl($url) {
+		foreach ($this->rutas as $ruta) {
+			if (preg_match($ruta->regex, $url, $matches)) {
+				$ruta->parametros = (count($matches) > 1)? $matches[1] : NULL;
+				return $ruta;
+			}
+		}
 	}
 }
