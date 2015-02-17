@@ -3,7 +3,7 @@
  * @Author: rafael
  * @Date:   2015-01-23 01:50:58
  * @Last Modified by:   Administrador
- * @Last Modified time: 2015-01-23 17:27:06
+ * @Last Modified time: 2015-02-17 16:05:01
  */
 
 class Contenedor implements \ArrayAccess {
@@ -35,12 +35,17 @@ class Contenedor implements \ArrayAccess {
 		}
 	}
 
+	/**
+	 * returns object in offset
+	 * @param  [type] $offset [description]
+	 * @return [type]         [description]
+	 */
 	public function offsetExists($offset) {
 		return isset($this->deposito[$offset]);
 	}
 
 	public function offsetGet($offset) {
-		return isset($this->deposito[$offset]) ? $this->deposito[$offset] : null;
+		return isset($this->construnctores[$offset]) ? $this->get($offset) : null;
 	}
 
 	public function offsetSet($offset, $value) {
@@ -56,7 +61,7 @@ class Contenedor implements \ArrayAccess {
 	}
 
 	public function __get($key) {
-		return $this->deposito[$key];
+		return isset($this->construnctores[$key]) ? $this->get($key) : null;;
 	}
 
 	public function __set($key, $value) {
