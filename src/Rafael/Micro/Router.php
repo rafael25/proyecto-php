@@ -3,7 +3,7 @@
  * @Author: rafael
  * @Date:   2015-01-19 23:50:09
  * @Last Modified by:   Administrador
- * @Last Modified time: 2015-02-17 15:57:46
+ * @Last Modified time: 2015-02-17 16:37:50
  */
 
 class Router {
@@ -17,12 +17,11 @@ class Router {
 	 * @param string $ruta
 	 * @param mixed $accion
 	 */
-	public function agregar($ruta, $accion) {
-		$this->rutas[] = new Ruta($ruta, $accion);
+	public function agregar($metodo, $ruta, $accion) {
+		$this->rutas[] = new Ruta($metodo, $ruta, $accion);
 	}
 
 	/**
-	 * [resolverUrl description]
 	 * @param  string $url
 	 * @return \Rafael\Micro\Ruta
 	 */
