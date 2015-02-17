@@ -3,7 +3,7 @@
  * @Author: rafael
  * @Date:   2015-01-19 23:50:09
  * @Last Modified by:   Administrador
- * @Last Modified time: 2015-02-17 16:37:50
+ * @Last Modified time: 2015-02-17 16:51:18
  */
 
 class Router {
@@ -14,6 +14,7 @@ class Router {
 	private $rutas = array();
 
 	/**
+	 * @param string $metodo
 	 * @param string $ruta
 	 * @param mixed $accion
 	 */
