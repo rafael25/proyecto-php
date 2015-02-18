@@ -3,7 +3,7 @@
  * @Author: rafael
  * @Date:   2015-02-17 14:02:14
  * @Last Modified by:   Administrador
- * @Last Modified time: 2015-02-17 16:51:58
+ * @Last Modified time: 2015-02-17 17:23:42
  */
 
 class Ruta {
@@ -18,10 +18,10 @@ class Ruta {
 	 * @param mixed $accion
 	 */
 	public function __construct($metodo, $ruta, $accion) {
-		$this->metodo = $metodo;
+		$this->metodo = strtolower($metodo);
 		$this->ruta = $ruta;
 		$this->accion = $accion;
 
-		$this->regex = '/' . preg_replace('/\//', '\/', $ruta) . '/';
+		$this->regex = '/^' . preg_replace('/\//', '\/', $ruta) . '$/';
 	}
 }

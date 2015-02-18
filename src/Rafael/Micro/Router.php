@@ -3,7 +3,7 @@
  * @Author: rafael
  * @Date:   2015-01-19 23:50:09
  * @Last Modified by:   Administrador
- * @Last Modified time: 2015-02-17 16:51:18
+ * @Last Modified time: 2015-02-17 17:21:08
  */
 
 class Router {
@@ -26,9 +26,9 @@ class Router {
 	 * @param  string $url
 	 * @return \Rafael\Micro\Ruta
 	 */
-	public function resolverUrl($url) {
+	public function resolverUrl($url, $metodo) {
 		foreach ($this->rutas as $ruta) {
-			if (preg_match($ruta->regex, $url, $matches)) {
+			if ($ruta->metodo == $metodo && preg_match($ruta->regex, $url, $matches)) {
 				$ruta->parametros = (count($matches) > 1)? $matches[1] : NULL;
 				return $ruta;
 			}
