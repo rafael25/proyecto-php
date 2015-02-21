@@ -1,9 +1,9 @@
-<?php namespace Rafael\Micro;
+<?php namespace Base\Micro;
 /**
  * @Author: rafael
  * @Date:   2015-02-17 14:02:14
- * @Last Modified by:   Administrador
- * @Last Modified time: 2015-02-17 17:23:42
+ * @Last Modified by:   rafael25
+ * @Last Modified time: 2015-02-20 22:49:10
  */
 
 class Ruta {

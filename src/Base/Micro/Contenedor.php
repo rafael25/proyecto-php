@@ -1,9 +1,9 @@
-<?php namespace Rafael\Micro;
+<?php namespace Base\Micro;
 /**
  * @Author: rafael
  * @Date:   2015-01-23 01:50:58
- * @Last Modified by:   Administrador
- * @Last Modified time: 2015-02-17 16:05:01
+ * @Last Modified by:   rafael25
+ * @Last Modified time: 2015-02-20 22:49:15
  */
 
 class Contenedor implements \ArrayAccess {

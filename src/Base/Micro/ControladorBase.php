@@ -1,21 +1,21 @@
-<?php namespace Rafael\Micro;
+<?php namespace Base\Micro;
 /**
  * @Author: rafael
  * @Date:   2015-01-27 15:10:48
- * @Last Modified by:   Administrador
- * @Last Modified time: 2015-01-27 15:55:34
+ * @Last Modified by:   rafael25
+ * @Last Modified time: 2015-02-20 22:51:18
  */
 
 class ControladorBase {
 
 	/**
-	 * @var \Rafael\Micro\Contenedor
+	 * @var \Base\Micro\Contenedor
 	 */
 	protected $contenedor = NULL;
 
 	/**
 	 * Asigna el contenedor de servicios
-	 * @param \Rafael\Micro\Contenedor $contenedor el contenedor
+	 * @param \Base\Micro\Contenedor $contenedor el contenedor
 	 */
 	public function setContenedor(Contenedor $contenedor) {
 		$this->contenedor = $contenedor;
@@ -23,7 +23,7 @@ class ControladorBase {
 
 	/**
 	 * Proporciona el contenedor de servicios
-	 * @return \Rafael\Micro\Contenedor el contenedor
+	 * @return \Base\Micro\Contenedor el contenedor
 	 */
 	public function getContenedor() {
 		return $this->contenedor;

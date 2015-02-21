@@ -1,9 +1,9 @@
-<?php namespace Rafael\Micro;
+<?php namespace Base\Micro;
 /**
  * @Author: rafael
  * @Date:   2015-01-19 23:50:09
- * @Last Modified by:   Administrador
- * @Last Modified time: 2015-02-17 17:21:08
+ * @Last Modified by:   rafael25
+ * @Last Modified time: 2015-02-20 22:51:00
  */
 
 class Router {
@@ -24,7 +24,7 @@ class Router {
 
 	/**
 	 * @param  string $url
-	 * @return \Rafael\Micro\Ruta
+	 * @return \Base\Micro\Ruta
 	 */
 	public function resolverUrl($url, $metodo) {
 		foreach ($this->rutas as $ruta) {
