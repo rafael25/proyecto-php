@@ -9,5 +9,6 @@
 $router = new \Base\Micro\Router;
 
 $router->agregar('get', '/', 'ControladorIndex::index');
+$router->agregar('get', '/recetas', 'ControladorRecetas::index');
 
 return $router;
