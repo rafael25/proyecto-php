@@ -2,8 +2,8 @@
 /**
  * @Author: rafael
  * @Date:   2015-02-19 14:00:34
- * @Last Modified by:   rafael25
- * @Last Modified time: 2015-02-20 22:49:00
+ * @Last Modified by:   Administrador
+ * @Last Modified time: 2015-02-25 14:48:18
  */
 
 class Vista {
@@ -11,7 +11,7 @@ class Vista {
 	private $datos = array();
 
 	public function __construct($template) {
-		$this->template = $template;
+		$this->template = dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . "App" . DIRECTORY_SEPARATOR . "vistas" . DIRECTORY_SEPARATOR . $template;
 	}
 
 	public function setDatos(array $datos) {
