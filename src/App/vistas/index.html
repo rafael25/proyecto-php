@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Inicio</title>
+</head>
+<body>
+	<?php foreach ($recetas as $receta) : ?>
+
+		<h4><?= $receta['nombre'] ?></h4>
+		<p><?= $receta['ingredientes'] ?></p>
+		<p><?= $receta['preparacion'] ?></p>
+
+	<?php endforeach; ?>
+</body>
+</html>
