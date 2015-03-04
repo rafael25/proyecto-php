@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Receta</title>
-</head>
-<body>
-	<p><?= $receta ?></p>
-</body>
-</html>
+<?php include 'header.html'; ?>
+
+	<h4><?= $receta['nombre'] ?></h4>
+	<p><strong>Ingredientes:</strong></p>
+	<p><?= $receta['ingredientes'] ?></p>
+	<p><strong>Preparacion:</strong></p>
+	<p><?= $receta['preparacion'] ?></p>
+
+<?php include 'footer.html'; ?>
