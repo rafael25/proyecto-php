@@ -16,6 +16,7 @@ $contenedor->set('router', function() {
 $contenedor->set('db', function () {
 	try {
 		$conn = new PDO("mysql:dbname=recetas;host=127.0.0.1", "root", "");
+		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	} catch (PDOException $e) {
 		echo "Fallo de conexion" . $e->getMessage();
 	}
