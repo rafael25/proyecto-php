@@ -6,10 +6,14 @@
  * @Last Modified time: 2015-02-27 19:48:13
  */
 
-$router = new \Base\Micro\Router;
+use Base\Micro\Router;
+
+$router = new Router;
 
 $router->agregar('get', '/', 'App\ControladorRecetas::index');
 $router->agregar('get', '/recetas', 'App\ControladorRecetas::index');
 $router->agregar('get', '/recetas/(\d+)', 'App\ControladorRecetas::buscarId');
+
+$router->setRuta404('App\ControladorErrores::error404');
 
 return $router;

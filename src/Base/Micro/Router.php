@@ -14,12 +14,24 @@ class Router {
 	private $rutas = array();
 
 	/**
+	 * @var ruta para el error 404 not found
+	 */
+	private $ruta404;
+
+	/**
 	 * @param string $metodo
 	 * @param string $ruta
 	 * @param mixed $accion
 	 */
 	public function agregar($metodo, $ruta, $accion) {
 		$this->rutas[] = new Ruta($metodo, $ruta, $accion);
+	}
+
+	/**
+	 * @param string $accion Controlador::metodo del error 404
+	 */
+	public function setRuta404($accion) {
+		$this->ruta404 = new Ruta('get', '/error404', $accion);
 	}
 
 	/**
@@ -33,5 +45,6 @@ class Router {
 				return $ruta;
 			}
 		}
+		return $this->ruta404;
 	}
 }
