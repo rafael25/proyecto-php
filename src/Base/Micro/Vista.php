@@ -21,11 +21,12 @@ class Vista {
 	public function __toString() {
 		extract($this->datos);
 		chdir(dirname($this->template));
+
 		ob_start();
 
 		include basename($this->template);
 
-		return ob_get_clean();
+		return utf8_encode(ob_get_clean());
 	}
 
 	public function __get($key) {
