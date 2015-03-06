@@ -10,6 +10,6 @@ $router = new \Base\Micro\Router;
 
 $router->agregar('get', '/', 'App\ControladorRecetas::index');
 $router->agregar('get', '/recetas', 'App\ControladorRecetas::index');
-$router->agregar('get', '/recetas/(\d)+', 'App\ControladorRecetas::buscarId');
+$router->agregar('get', '/recetas/(\d+)', 'App\ControladorRecetas::buscarId');
 
 return $router;
