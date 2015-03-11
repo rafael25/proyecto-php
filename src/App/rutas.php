@@ -13,6 +13,8 @@ $router = new Router;
 $router->agregar('get', '/', 'App\ControladorRecetas::index');
 $router->agregar('get', '/recetas', 'App\ControladorRecetas::index');
 $router->agregar('get', '/recetas/(\d+)', 'App\ControladorRecetas::buscarId');
+$router->agregar('get', '/recetas-nueva', 'App\ControladorRecetas::ingresar');
+$router->agregar('post', '/recetas', 'App\ControladorRecetas::guardar');
 
 $router->setRuta404('App\ControladorErrores::error404');
 

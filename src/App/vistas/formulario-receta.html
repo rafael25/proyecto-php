@@ -1,0 +1,40 @@
+<?php include 'header.html'; ?>
+
+<div>
+	<p>
+		<form action="/recetas" method="POST">
+			
+			<p>
+				<label for="nombre">Nombre</label>
+				<input type="text" name="nombre">
+			</p>
+			<p>
+				<label for="ingredientes">Ingredientes</label>
+				<textarea name="ingredientes"></textarea>
+			</p>
+			<p>
+				<label for="preparacion">Preparación</label>
+				<textarea name="preparacion"></textarea>
+			</p>
+			<p>
+				<label for="tiempo_prep">Tiempo de Preparación</label>
+				<input type="text" name="tiempo_prep">
+				<label>minutos</label>
+			</p>
+			<p>
+				<label for="rendimiento">Rendimiento</label>
+				<input type="text" name="rendimiento">
+			</p>
+			<p>
+				<label for="imagen">Imagen</label>
+				<input type="text" name="imagen">
+			</p>
+		
+			<p>
+				<input type="submit" name="guardar" value="Guardar">
+			</p>
+		</form>
+	</p>
+</div>
+
+<?php include 'footer.html'; ?>
