@@ -7,6 +7,14 @@
 	<p><?= $receta['preparacion'] ?></p>
 
 
+	<form action="/comentarios" method="POST">
+		<label for="comentario">Comentario</label>
+		<textarea name="comentario"></textarea>
+		<input type="hidden" name="recetaId" value="<?= $receta['id'] ?>">
+
+		<input type="submit" value="Enviar">
+	</form>
+
 	<?php foreach ($comentarios as $comentario) : ?>
 
 		<p><?= $comentario['comentario']?></p>
