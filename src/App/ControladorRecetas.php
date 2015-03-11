@@ -25,10 +25,13 @@ class ControladorRecetas extends ControladorBase {
 	 * @return Vista
 	 */
 	public function buscarId($id) {
-		$receta = $this->db->query("SELECT * FROM recetas where id=$id");
-		$vista = new Vista("receta.html");
+		$receta = $this->db->query("SELECT * FROM recetas WHERE id=$id");
 		$receta = $receta->fetch();
+		$recetaId = $receta['id'];
+		$comentarios = $this->db->query("SELECT * FROM comentarios WHERE receta_id = $recetaId");
+		$vista = new Vista("receta.html");
 		$vista->receta = $receta;
+		$vista->comentarios = $comentarios;
 		$vista->docTitle = 'Receta: ' . $receta['nombre'];
 		echo $vista;
 	}

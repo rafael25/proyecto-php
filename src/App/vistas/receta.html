@@ -6,4 +6,11 @@
 	<p><strong>Preparacion:</strong></p>
 	<p><?= $receta['preparacion'] ?></p>
 
+
+	<?php foreach ($comentarios as $comentario) : ?>
+
+		<p><?= $comentario['comentario']?></p>
+
+	<?php endforeach; ?>
+	
 <?php include 'footer.html'; ?>
