@@ -3,7 +3,7 @@
  * @Author: rafael
  * @Date:   2015-02-17 16:33:19
  * @Last Modified by:   rafael25
- * @Last Modified time: 2015-02-25 01:21:19
+ * @Last Modified time: 2015-03-12 02:23:25
  */
 
 class Aplicacion {
@@ -14,6 +14,7 @@ class Aplicacion {
 	}
 
 	public function run() {
+		session_start();
 		$requestURL = (isset($_GET['_url'])) ? $_GET['_url'] : '/';
 		$ruta = $this->contenedor->router->resolverUrl($requestURL, strtolower($_SERVER['REQUEST_METHOD']));
 		$accion = preg_split('/::/', $ruta->accion);
