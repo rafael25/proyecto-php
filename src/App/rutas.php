@@ -2,8 +2,8 @@
 /**
  * @Author: rafael25
  * @Date:   2015-02-20 22:43:44
- * @Last Modified by:   Administrador
- * @Last Modified time: 2015-03-11 17:51:50
+ * @Last Modified by:   rafael25
+ * @Last Modified time: 2015-03-12 00:58:17
  */
 
 use Base\Micro\Router;
@@ -25,6 +25,7 @@ $router->agregar('get', '/login', 'App\ControladorUsuarios::loginForm');
 $router->agregar('post', '/login', 'App\ControladorUsuarios::login');
 $router->agregar('get', '/signin', 'App\ControladorUsuarios::signInForm');
 $router->agregar('post', '/signin', 'App\ControladorUsuarios::signIn');
+$router->agregar('get', '/logout', 'App\ControladorUsuarios::logout');
 
 /*--------- Errores ---------*/
 $router->setRuta404('App\ControladorErrores::error404');
