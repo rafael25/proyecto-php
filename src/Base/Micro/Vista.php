@@ -2,8 +2,8 @@
 /**
  * @Author: rafael
  * @Date:   2015-02-19 14:00:34
- * @Last Modified by:   Administrador
- * @Last Modified time: 2015-02-25 14:48:18
+ * @Last Modified by:   rafael
+ * @Last Modified time: 2015-03-12 01:26:34
  */
 
 class Vista {
@@ -26,7 +26,12 @@ class Vista {
 
 		include basename($this->template);
 
-		return utf8_encode(ob_get_clean());
+		$vista = ob_get_clean();
+
+		if(mb_detect_encoding($vista) == 'UTF-8') {
+			return $vista;
+		}
+		return utf8_encode($vista);
 	}
 
 	public function __get($key) {
