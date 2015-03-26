@@ -2,8 +2,8 @@
 /**
  * @Author: rafael
  * @Date:   2015-01-27 15:10:48
- * @Last Modified by:   Administrador
- * @Last Modified time: 2015-02-27 18:54:46
+ * @Last Modified by:   rafael
+ * @Last Modified time: 2015-03-25 20:52:28
  */
 
 class ControladorBase {
@@ -16,7 +16,7 @@ class ControladorBase {
 	 * Define el nivel de acceso de todoso los metodos del controlador
 	 * @var int
 	 */
-	protected $nivelAcceso = self::TODOS;
+	protected $nivelAcceso = self::SOLO_USUARIOS;
 
 	/**
 	 * @var \Base\Micro\Contenedor
