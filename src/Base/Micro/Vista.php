@@ -3,7 +3,7 @@
  * @Author: rafael
  * @Date:   2015-02-19 14:00:34
  * @Last Modified by:   rafael
- * @Last Modified time: 2015-03-12 01:26:34
+ * @Last Modified time: 2015-03-25 21:05:50
  */
 
 class Vista {
@@ -11,6 +11,7 @@ class Vista {
 	private $datos = array();
 
 	public function __construct($template) {
+		$this->datos['usuario'] = $_SESSION['usuario'];
 		$this->template = dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . "App" . DIRECTORY_SEPARATOR . "vistas" . DIRECTORY_SEPARATOR . $template;
 	}
 
