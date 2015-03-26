@@ -2,14 +2,16 @@
 /**
  * @Author: rafael
  * @Date:   2015-03-11 17:45:23
- * @Last Modified by:   rafael25
- * @Last Modified time: 2015-03-12 02:33:51
+ * @Last Modified by:   rafael
+ * @Last Modified time: 2015-03-25 20:56:52
  */
 
 use \Base\Micro\ControladorBase;
 use \Base\Micro\Vista;
 
 class ControladorUsuarios extends ControladorBase {
+
+	protected $nivelAcceso = self::TODOS;
 
 	/**
 	 * Muestra el formulario de inicio de sesión
@@ -75,7 +77,9 @@ class ControladorUsuarios extends ControladorBase {
 	 * @return Redirect
 	 */
 	public function logout() {
-		var_dump($_SESSION);
-		// TODO: Implementar cierre de sesión
+		session_unset();
+		$cookie = session_get_cookie_params();
+		setcookie(session_name(), '', time() - 42000, $cookie['path'], $cookie['domain'], $cookie['secure'], $cookie['httponly']);
+		session_destroy();
 	}
 }
