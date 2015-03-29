@@ -2,8 +2,8 @@
 /**
  * @Author: rafael
  * @Date:   2015-01-23 16:04:40
- * @Last Modified by:   rafael25
- * @Last Modified time: 2015-02-25 01:15:00
+ * @Last Modified by:   Rafael Viveros
+ * @Last Modified time: 2015-03-28 19:47:30
  */
 
 /**
@@ -28,6 +28,12 @@ $app = new \Base\Micro\Aplicacion($contenedor);
 /**
  * Arranca la aplicacion
  */
-$app->run();
+
+try {
+	$app->run();
+} catch (Exception $e) {
+	header('HTTP/1.0 404 Not Found');
+	echo $e->getMessage();
+}
 
 ?>
