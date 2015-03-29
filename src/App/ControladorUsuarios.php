@@ -3,7 +3,7 @@
  * @Author: rafael
  * @Date:   2015-03-11 17:45:23
  * @Last Modified by:   rafael
- * @Last Modified time: 2015-03-25 20:56:52
+ * @Last Modified time: 2015-03-26 21:28:22
  */
 
 use \Base\Micro\ControladorBase;
@@ -35,10 +35,11 @@ class ControladorUsuarios extends ControladorBase {
 		$pass = $_POST['pass'];
 
 		$usuario = $this->db->query("SELECT * FROM usuarios WHERE email = '$email'");
-		$usuario = $usuario->fetch();
+		$usuario = $usuario->fetch(\PDO::FETCH_ASSOC);
 
 		if(password_verify($pass, $usuario['password'])) {
 			session_start();
+			unset($usuario['password']);
 			$_SESSION['usuario'] = $usuario;
 		}
 	}
