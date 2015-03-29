@@ -1,13 +1,16 @@
 <?php include 'header.html'; ?>
 
-<div>
-	<p>
+<div class="row">
+	<div class="large-12 columns">
 		<form action="/recetas" method="POST">
-			
-			<p>
-				<label for="nombre">Nombre</label>
-				<input type="text" name="nombre">
-			</p>
+			<div class="row collapse">
+				<div class="large-3 columns">
+					<span class="prefix">Nombre</span>
+				</div>
+				<div class="large-9 columns">
+					<input type="text" name="nombre">
+				</div>
+			</div>
 			<p>
 				<label for="ingredientes">Ingredientes</label>
 				<textarea name="ingredientes"></textarea>
@@ -16,25 +19,39 @@
 				<label for="preparacion">Preparación</label>
 				<textarea name="preparacion"></textarea>
 			</p>
-			<p>
-				<label for="tiempo_prep">Tiempo de Preparación</label>
-				<input type="text" name="tiempo_prep">
-				<label>minutos</label>
-			</p>
-			<p>
-				<label for="rendimiento">Rendimiento</label>
-				<input type="text" name="rendimiento">
-			</p>
+			<div class="row">
+				<div class="large-6 columns">
+					<div class="row collapse">
+						<div class="large-6 columns">
+							<span class="prefix">Tiempo de Preparación</span>
+						</div>
+						<div class="large-3 columns">
+							<input type="text" name="tiempo_prep">
+						</div>
+						<div class="large-3 columns">
+							<span class="postfix">minutos</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="large-6 columns">
+					<div class="row collapse">
+						<div class="large-4 columns">
+							<span class="prefix">Rendimiento</span>
+						</div>
+						<div class="large-8 columns">
+							<input type="text" name="rendimiento">
+						</div>
+					</div>
+				</div>
+			</div>
 			<p>
 				<label for="imagen">Imagen</label>
-				<input type="text" name="imagen">
+				<input type="file" name="imagen">
 			</p>
-		
-			<p>
-				<input type="submit" name="guardar" value="Guardar">
-			</p>
+			<p><input type="submit" class="button success tiny radius" name="guardar" value="Guardar"></p>
 		</form>
-	</p>
+	</div>
 </div>
 
 <?php include 'footer.html'; ?>

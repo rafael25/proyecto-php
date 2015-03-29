@@ -1,23 +1,27 @@
 <?php include 'header.html'; ?>
 
-	<form action="/signin" method="post">
-		<p>
-			<label for="nombre">Nombre</label>
-			<input type="text" name="nombre">
-		</p>
-		<p>
-			<label for="apellidos">Apellidos</label>
-			<input type="text" name="apellidos">
-		</p>
-		<p>
-			<label for="email">E-mail</label>
-			<input type="text" name="email">
-		</p>
-		<p>
-			<label for="pass">Contraseña</label>
-			<input type="password" name="pass">
-		</p>
-		<p><input type="submit" value="Registrar"></p>
-	</form>
+	<div class="row">
+		<div class="large-12 columns">
+			<form action="/signin" method="post">
+				<p>
+					<label for="nombre">Nombre</label>
+					<input type="text" name="nombre">
+				</p>
+				<p>
+					<label for="apellidos">Apellidos</label>
+					<input type="text" name="apellidos">
+				</p>
+				<p>
+					<label for="email">E-mail</label>
+					<input type="text" name="email">
+				</p>
+				<p>
+					<label for="pass">Contraseña</label>
+					<input type="password" name="pass">
+				</p>
+				<p><input type="submit" class="button success tiny radius" value="Registrar"></p>
+			</form>
+		</div>
+	</div>
 
 <?php include 'footer.html'; ?>

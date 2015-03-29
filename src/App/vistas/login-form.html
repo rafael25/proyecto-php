@@ -1,16 +1,20 @@
 <?php include 'header.html'; ?>
 
-	<form action="/login" method="post">
-		<p>
-			<label for="email">E-mail</label>
-			<input type="text" name="email">
-		</p>
-		<p>
-			<label for="pass">Contraseña</label>
-			<input type="password" name="pass">
-		</p>
-
-		<p><input type="submit" value="Iniciar"></p>
-	</form>
+	<div class="row">
+		<div class="large-12 columns">
+			<form action="/login" method="post">
+				<p>
+					<label for="email">E-mail</label>
+					<input type="text" name="email">
+				</p>
+				<p>
+					<label for="pass">Contraseña</label>
+					<input type="password" name="pass">
+				</p>
+			
+				<p><input type="submit" class="button success tiny radius" value="Iniciar"></p>
+			</form>
+		</div>
+	</div>
 
 <?php include 'footer.html'; ?>

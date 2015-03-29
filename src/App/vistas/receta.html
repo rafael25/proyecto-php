@@ -1,24 +1,43 @@
 <?php include 'header.html'; ?>
 
-	<h4><?= $receta['nombre'] ?></h4>
-	<p><strong>Ingredientes:</strong></p>
-	<p><?= $receta['ingredientes'] ?></p>
-	<p><strong>Preparacion:</strong></p>
-	<p><?= $receta['preparacion'] ?></p>
-
-
-	<form action="/comentarios" method="POST">
-		<label for="comentario">Comentario</label>
-		<textarea name="comentario"></textarea>
-		<input type="hidden" name="recetaId" value="<?= $receta['id'] ?>">
-
-		<input type="submit" value="Enviar">
-	</form>
-
-	<?php foreach ($comentarios as $comentario) : ?>
-
-		<p><?= $comentario['comentario']?></p>
-
-	<?php endforeach; ?>
+	<div class="row">
+		<div class="large-9 columns receta-wrapper">
+			<h2 class="nombre-receta"><?= $receta['nombre'] ?></h2>
+			<p class="nombre-autor">Por: <?= $receta['autor']['nombre'] . ' ' . $receta['autor']['apellidos'] ?></p>
+			<div class="row">
+				<div class="large-4 columns">
+					<p><strong>Ingredientes:</strong></p>
+					<p class="ingredientes-receta"><?= $receta['ingredientes'] ?></p>
+					<p><strong>Rendimiento:</strong></p>
+					<p><?= $receta['rendimiento'] ?></p>
+					<p><strong>Tiempo de preparación:</strong></p>
+					<p><?= $receta['tiempo_prep'] ?> minutos</p>
+				</div>
+				<div class="large-8 columns">
+					<p><strong>Preparación:</strong></p>
+					<p class="preparacion-receta"><?= $receta['preparacion'] ?></p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="large-3 columns comentarios-wrapper">
+			<form action="/comentarios" method="POST">
+				<label for="comentario">Escribe un comentario</label>
+				<textarea name="comentario"></textarea>
+				<input type="hidden" name="recetaId" value="<?= $receta['id'] ?>">
+			
+				<input type="submit" class="button success tiny radius" value="Enviar">
+			</form>
+			
+			<?php foreach ($comentarios as $comentario) : ?>
+			
+				<div class="comentario">
+					<p><img width="30" height="30" src="/publico/imagenes/<?= $comentario['imagen'] ?>" alt="">
+					<?= $comentario['nombre'] ?></p>
+					<p><?= $comentario['comentario'] ?></p>
+				</div>
+			
+			<?php endforeach; ?></div>
+		</div>
 	
 <?php include 'footer.html'; ?>

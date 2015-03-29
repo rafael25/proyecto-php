@@ -1,0 +1,33 @@
+/* 
+* @Author: rafael
+* @Date:   2015-03-28 17:04:28
+* @Last Modified by:   Rafael Viveros
+* @Last Modified time: 2015-03-28 17:55:29
+*/
+
+.main-wrapper {
+	margin-top: 1.5rem;
+}
+
+.receta-wrapper {
+	margin-top: 0.5rem;
+	border-right: 1px solid #CCC;
+}
+
+.comentarios-wrapper {
+	margin-top: 2rem;
+}
+
+.nombre-autor {
+	text-align: right;
+	font-style: italic;
+	color: #666;
+}
+
+.nombre-receta {
+	text-align: center;
+}
+
+.ingredientes-receta {
+	white-space: pre-line;
+}
