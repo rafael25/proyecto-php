@@ -2,8 +2,8 @@
 /**
  * @Author: rafael
  * @Date:   2015-01-19 23:50:09
- * @Last Modified by:   rafael25
- * @Last Modified time: 2015-02-20 22:51:00
+ * @Last Modified by:   Rafael Viveros
+ * @Last Modified time: 2015-03-28 21:25:49
  */
 
 class Router {
@@ -41,7 +41,7 @@ class Router {
 	public function resolverUrl($url, $metodo) {
 		foreach ($this->rutas as $ruta) {
 			if ($ruta->metodo == $metodo && preg_match($ruta->regex, $url, $matches)) {
-				$ruta->parametros = (count($matches) > 1)? $matches[1] : NULL;
+				$ruta->parametros = (count($matches) > 1)? $matches : NULL;
 				return $ruta;
 			}
 		}

@@ -2,8 +2,8 @@
 /**
  * @Author: rafael
  * @Date:   2015-02-17 16:33:19
- * @Last Modified by:   rafael
- * @Last Modified time: 2015-03-25 21:00:01
+ * @Last Modified by:   Rafael Viveros
+ * @Last Modified time: 2015-03-28 21:30:48
  */
 
 class Aplicacion {
@@ -29,7 +29,12 @@ class Aplicacion {
 		}
 
 		$controlador->setContenedor($this->contenedor);
-		$controlador->$accion[1]($ruta->parametros);
+		
+		if(is_array($ruta->parametros)) {
+			unset($ruta->parametros[0]);
+			$controlador->$accion[1](...$ruta->parametros);
+		}
+		else $controlador->$accion[1]();
 	}
 
 	private function reanudarSession() {
