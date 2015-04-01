@@ -68,7 +68,44 @@ class ControladorRecetas extends ControladorBase {
 		$tiempo = $_POST["tiempo_prep"];
 		$rendimiento = $_POST["rendimiento"];
 		$imagen = $_POST["imagen"];
+		$autor = $_SESSION["usuario"]["id"];
 
-		$receta = $this->db->query("INSERT INTO recetas (nombre, ingredientes, preparacion, tiempo_prep, rendimiento) VALUES ('$nombre', '$ingredientes', '$preparacion', $tiempo, '$rendimiento')");
+		$receta = $this->db->query("INSERT INTO recetas (nombre, ingredientes, preparacion, tiempo_prep, rendimiento, autor_id) VALUES ('$nombre', '$ingredientes', '$preparacion', $tiempo, '$rendimiento', $autor)");
+
+		$this->router->redireccionA('/recetas/'.$this->db->lastInsertId());
+	}
+
+	/**
+	 * Muestra el formulario con los datos de una receta para editarlos
+	 * @ruta '/recetas/id/editar'
+	 * @metodo 'get'
+	 * @param  int $id
+	 * @return Vista
+	 */
+	public function editForm($id) {
+		$receta = $this->db->query("SELECT * FROM recetas WHERE id = $id");
+		$receta = $receta->fetch(\PDO::FETCH_ASSOC);
+		$vista = new Vista('receta-editar.html');
+		$vista->docTitle = 'Editar receta '.$receta['nombre'];
+		$vista->receta = $receta;
+		echo $vista;
+	}
+
+	public function editar($id) {
+		$receta = $this->db->query("SELECT * FROM recetas WHERE id = $id");
+		$receta = $receta->fetch(\PDO::FETCH_ASSOC);
+		
+		if ($receta['autor_id'] == $_SESSION['usuario']['id']) {
+			$nombre = $_POST["nombre"];
+			$ingredientes = $_POST["ingredientes"];
+			$preparacion = $_POST["preparacion"];
+			$tiempo = $_POST["tiempo_prep"];
+			$rendimiento = $_POST["rendimiento"];
+			$imagen = $_POST["imagen"];
+			
+			$this->db->query("UPDATE recetas SET nombre = '$nombre', ingredientes = '$ingredientes', preparacion = '$preparacion', tiempo_prep = $tiempo, rendimiento = '$rendimiento' WHERE id = $id");
+		}
+
+		$this->router->redireccionA('/recetas/'.$id);
 	}
 }

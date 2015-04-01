@@ -1,24 +1,36 @@
 <?php include 'header.html'; ?>
 
+<?php if($receta['autor_id'] != $usuario['id']) : ?>
+
 <div class="row">
 	<div class="large-12 columns">
-		<form action="/recetas" method="POST">
+		<div class="alert-box warning radius">
+			Solo el autor original puede modificar esta receta
+		</div>
+	</div>
+</div>
+
+<?php endif; ?>
+
+<div class="row">
+	<div class="large-12 columns">
+		<form action="/recetas/<?= $receta['id'] ?>/editar" method="POST">
 			<div class="row collapse">
 				<div class="large-3 columns">
 					<span class="prefix">Nombre</span>
 				</div>
 				<div class="large-9 columns">
-					<input type="text" name="nombre">
+					<input type="text" name="nombre" value="<?= $receta['nombre'] ?>">
 				</div>
 			</div>
 			<div class="row">
 				<div class="large-6 columns">
 					<label for="ingredientes">Ingredientes</label>
-					<textarea rows="15" name="ingredientes"></textarea>
+					<textarea rows="15" name="ingredientes"><?= $receta['ingredientes'] ?></textarea>
 				</div>
 				<div class="large-6 columns">
 					<label for="preparacion">Preparación</label>
-					<textarea rows="15" name="preparacion"></textarea>
+					<textarea rows="15" name="preparacion"><?= $receta['preparacion'] ?></textarea>
 				</div>
 			</div>
 			<div class="row">
@@ -28,7 +40,7 @@
 							<span class="prefix">Tiempo de Preparación</span>
 						</div>
 						<div class="large-3 columns">
-							<input type="text" name="tiempo_prep">
+							<input type="text" name="tiempo_prep" value="<?= $receta['tiempo_prep'] ?>">
 						</div>
 						<div class="large-3 columns">
 							<span class="postfix">minutos</span>
@@ -42,7 +54,7 @@
 							<span class="prefix">Rendimiento</span>
 						</div>
 						<div class="large-8 columns">
-							<input type="text" name="rendimiento">
+							<input type="text" name="rendimiento" value="<?= $receta['rendimiento'] ?>">
 						</div>
 					</div>
 				</div>
