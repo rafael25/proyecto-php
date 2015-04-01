@@ -3,7 +3,7 @@
  * @Author: rafael
  * @Date:   2015-02-17 16:33:19
  * @Last Modified by:   Rafael Viveros
- * @Last Modified time: 2015-03-28 21:30:48
+ * @Last Modified time: 2015-03-31 13:51:41
  */
 
 class Aplicacion {
@@ -24,8 +24,7 @@ class Aplicacion {
 		$controlador = new $accion[0];
 
 		if (!$this->validarPermisos($controlador)) {
-			echo "Debes iniciar session";
-			return;
+			$this->contenedor->router->redireccionA('/login');
 		}
 
 		$controlador->setContenedor($this->contenedor);

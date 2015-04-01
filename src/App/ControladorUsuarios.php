@@ -2,8 +2,8 @@
 /**
  * @Author: rafael
  * @Date:   2015-03-11 17:45:23
- * @Last Modified by:   rafael
- * @Last Modified time: 2015-03-26 21:28:22
+ * @Last Modified by:   Rafael Viveros
+ * @Last Modified time: 2015-03-31 14:08:58
  */
 
 use \Base\Micro\ControladorBase;
@@ -20,6 +20,10 @@ class ControladorUsuarios extends ControladorBase {
 	 * @return Vista
 	 */
 	public function loginForm() {
+		if ($this->sesionActiva()) {
+			$this->router->redireccionA('/');
+		}
+		
 		$vista = new Vista('login-form.html');
 		$vista->docTitle = 'Iniciar sesión';
 		echo $vista;
@@ -28,7 +32,7 @@ class ControladorUsuarios extends ControladorBase {
 	/**
 	 * @ruta '/login'
 	 * @metodo 'post'
-	 * @return Redirect
+	 * @return Redirect /
 	 */
 	public function login() {
 		$email = $_POST['email'];
@@ -41,6 +45,8 @@ class ControladorUsuarios extends ControladorBase {
 			session_start();
 			unset($usuario['password']);
 			$_SESSION['usuario'] = $usuario;
+
+			$this->router->redireccionA('/');
 		}
 	}
 
@@ -48,9 +54,13 @@ class ControladorUsuarios extends ControladorBase {
 	 * Muestra el formulario de registro de usuario
 	 * @ruta '/signin'
 	 * @metodo 'get'
-	 * @return Vista
+	 * @return Vista | Redirect /
 	 */
 	public function signInForm() {
+		if ($this->sesionActiva()) {
+			$this->router->redireccionA('/');
+		}
+
 		$vista = new Vista('signin-form.html');
 		$vista->docTitle = 'Registro de nuevo usuario';
 		echo $vista;
@@ -59,7 +69,7 @@ class ControladorUsuarios extends ControladorBase {
 	/**
 	 * @ruta '/signin'
 	 * @metodo 'post'
-	 * @return Redirect
+	 * @return Redirect /login
 	 */
 	public function signIn() {
 		$nombre = $_POST['nombre'];
@@ -69,18 +79,31 @@ class ControladorUsuarios extends ControladorBase {
 
 		$pass = password_hash($pass, PASSWORD_DEFAULT);
 		$this->db->query("INSERT INTO usuarios (nombre, apellidos, email, password) VALUES ('$nombre', '$apellidos', '$email', '$pass')");
+
+		$this->router->redireccionA('/login');
 	}
 
 	/**
 	 * Termina la sesión de usuario
 	 * @ruta '/logout'
 	 * @metodo 'get'
-	 * @return Redirect
+	 * @return Redirect /login
 	 */
 	public function logout() {
-		session_unset();
-		$cookie = session_get_cookie_params();
-		setcookie(session_name(), '', time() - 42000, $cookie['path'], $cookie['domain'], $cookie['secure'], $cookie['httponly']);
-		session_destroy();
+		if ($this->sesionActiva()) {
+			session_unset();
+			$cookie = session_get_cookie_params();
+			setcookie(session_name(), '', time() - 42000, $cookie['path'], $cookie['domain'], $cookie['secure'], $cookie['httponly']);
+			session_destroy();
+		}
+
+		$this->router->redireccionA('/login');
+	}
+
+	/**
+	 * @return bool true si existe una sesión, false en caso contrario
+	 */
+	private function sesionActiva() {
+		return isset($_SESSION['usuario']);
 	}
 }

@@ -3,7 +3,7 @@
  * @Author: rafael
  * @Date:   2015-01-19 23:50:09
  * @Last Modified by:   Rafael Viveros
- * @Last Modified time: 2015-03-28 21:25:49
+ * @Last Modified time: 2015-03-31 13:48:58
  */
 
 class Router {
@@ -46,5 +46,14 @@ class Router {
 			}
 		}
 		return $this->ruta404;
+	}
+
+	/**
+	 * @param  string $ruta
+	 */
+	public function redireccionA($ruta) {
+		$host  = $_SERVER['HTTP_HOST'];
+		header('Location: http://'.$host.$ruta);
+		exit();
 	}
 }
