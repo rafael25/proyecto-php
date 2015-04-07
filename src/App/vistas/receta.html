@@ -6,8 +6,8 @@
 			<p class="nombre-autor">Por: <?= $receta['autor']['nombre'] . ' ' . $receta['autor']['apellidos'] ?></p>
 			<ul class="button-group round">
 				<li><a class="button tiny secondary" href="/recetas/<?= $receta['id'] ?>/editar">Editar</a></li>
-				<li><a class="button tiny secondary" href="/recetas/<?= $receta['id'] ?>/borrar">Borrar</a></li>
-				<li><a class="button tiny secondary" href="/recetas/<?= $receta['id'] ?>/versiones">Alternativas <span class="label round">5</span></a></li>
+				<li><form method="post" action="/recetas/<?= $receta['id'] ?>/borrar"><input type="submit" class="button tiny secondary" value="Borrar" /></form></li>
+				<li><a class="button tiny secondary" id="alt-button" href="#">Alternativas <span class="label round">5</span></a></li>
 			</ul>
 			<div class="tabs-content">
 				<div class="content active">
@@ -45,11 +45,15 @@
 			
 				<div class="comentario">
 					<p><img width="30" height="30" src="/publico/imagenes/<?= $comentario['imagen'] ?>" alt="">
-					<?= $comentario['nombre'] ?></p>
+					<?= $comentario['nombre'] ?> <?= $comentario['apellidos'] ?></p>
 					<p><?= $comentario['comentario'] ?></p>
 				</div>
 			
 			<?php endforeach; ?></div>
+		</div>
+
+		<div class="reveal-modal" id="alt-modal">
+			<a class="close-reveal-modal" aria-label="Close">&#215;</a>
 		</div>
 	
 <?php include 'footer.html'; ?>

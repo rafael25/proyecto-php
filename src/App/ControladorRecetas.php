@@ -91,6 +91,12 @@ class ControladorRecetas extends ControladorBase {
 		echo $vista;
 	}
 
+	/**
+	 * @ruta '/recetas/id/editar'
+	 * @metodo 'post'
+	 * @param  int $id
+	 * @return Redirect /recetas/id
+	 */
 	public function editar($id) {
 		$receta = $this->db->query("SELECT * FROM recetas WHERE id = $id");
 		$receta = $receta->fetch(\PDO::FETCH_ASSOC);
@@ -107,5 +113,23 @@ class ControladorRecetas extends ControladorBase {
 		}
 
 		$this->router->redireccionA('/recetas/'.$id);
+	}
+
+	/**
+	 * Elimina la receta, con el id proporcionado, de la base de datos
+	 * @ruta '/recetas/id/borrar'
+	 * @metodo 'post'
+	 * @param  int $id
+	 * @return Redirect '/recetas'
+	 */
+	public function borrar($id) {
+		$receta = $this->db->query("SELECT * FROM recetas WHERE id = $id");
+		$receta = $receta->fetch(\PDO::FETCH_ASSOC);
+		
+		if ($receta['autor_id'] == $_SESSION['usuario']['id']) {
+			$this->db->query("DELETE FROM recetas WHERE id = $id");
+		}
+
+		$this->router->redireccionA('/recetas');
 	}
 }

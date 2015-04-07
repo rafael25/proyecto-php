@@ -3,7 +3,7 @@
  * @Author: rafael25
  * @Date:   2015-02-20 22:43:44
  * @Last Modified by:   Rafael Viveros
- * @Last Modified time: 2015-03-31 20:09:17
+ * @Last Modified time: 2015-03-31 20:52:19
  */
 
 use Base\Micro\Router;
@@ -18,6 +18,7 @@ $router->agregar('get', '/recetas-nueva', 'App\ControladorRecetas::ingresar');
 $router->agregar('post', '/recetas', 'App\ControladorRecetas::guardar');
 $router->agregar('get', '/recetas/(\d+)/editar', 'App\ControladorRecetas::editForm');
 $router->agregar('post', '/recetas/(\d+)/editar', 'App\ControladorRecetas::editar');
+$router->agregar('post', '/recetas/(\d+)/borrar', 'App\ControladorRecetas::borrar');
 
 /*--------- Versiones ---------*/
 $router->agregar('get', '/recetas/(\d+)/versiones', 'App\ControladorVersiones::index');
