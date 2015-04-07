@@ -2,11 +2,13 @@
 
 	<div class="row">
 		<div class="large-9 columns receta-wrapper">
+			<p class="receta-imagen"><img src="/publico/imagenes/<?= $receta['imagen'] ?>" /></p>
 			<h2 class="nombre-receta"><?= $receta['nombre'] ?></h2>
 			<p class="nombre-autor">Por: <?= $receta['autor']['nombre'] . ' ' . $receta['autor']['apellidos'] ?></p>
-			<ul class="button-group round">
+			<ul class="controles-receta button-group round">
 				<li><a class="button tiny secondary" href="/recetas/<?= $receta['id'] ?>/editar">Editar</a></li>
 				<li><form method="post" action="/recetas/<?= $receta['id'] ?>/borrar"><input type="submit" class="button tiny secondary" value="Borrar" /></form></li>
+				<li><a class="button tiny secondary">PDF</a></li>
 				<li><a class="button tiny secondary" id="alt-button" href="#">Alternativas <span class="label round">5</span></a></li>
 			</ul>
 			<div class="tabs-content">

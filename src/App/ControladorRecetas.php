@@ -67,10 +67,11 @@ class ControladorRecetas extends ControladorBase {
 		$preparacion = $_POST["preparacion"];
 		$tiempo = $_POST["tiempo_prep"];
 		$rendimiento = $_POST["rendimiento"];
-		$imagen = $_POST["imagen"];
 		$autor = $_SESSION["usuario"]["id"];
+		
+		$imagen = $this->cargarImagen($_FILES['imagen']['tmp_name'], md5($nombre));
 
-		$receta = $this->db->query("INSERT INTO recetas (nombre, ingredientes, preparacion, tiempo_prep, rendimiento, autor_id) VALUES ('$nombre', '$ingredientes', '$preparacion', $tiempo, '$rendimiento', $autor)");
+		$receta = $this->db->query("INSERT INTO recetas (nombre, ingredientes, preparacion, tiempo_prep, rendimiento, autor_id, imagen) VALUES ('$nombre', '$ingredientes', '$preparacion', $tiempo, '$rendimiento', $autor, '$imagen')");
 
 		$this->router->redireccionA('/recetas/'.$this->db->lastInsertId());
 	}
@@ -107,9 +108,15 @@ class ControladorRecetas extends ControladorBase {
 			$preparacion = $_POST["preparacion"];
 			$tiempo = $_POST["tiempo_prep"];
 			$rendimiento = $_POST["rendimiento"];
-			$imagen = $_POST["imagen"];
 			
-			$this->db->query("UPDATE recetas SET nombre = '$nombre', ingredientes = '$ingredientes', preparacion = '$preparacion', tiempo_prep = $tiempo, rendimiento = '$rendimiento' WHERE id = $id");
+			if (is_string($receta['imagen'])) {
+				$imagen = $receta['imagen'];
+				$this->cargarImagen($_FILES['imagen']['tmp_name'], $receta['imagen']);
+			} else {
+				$imagen = $this->cargarImagen($_FILES['imagen']['tmp_name'], md5($nombre));
+			}
+			
+			$this->db->query("UPDATE recetas SET nombre = '$nombre', ingredientes = '$ingredientes', preparacion = '$preparacion', tiempo_prep = $tiempo, rendimiento = '$rendimiento', imagen = '$imagen' WHERE id = $id");
 		}
 
 		$this->router->redireccionA('/recetas/'.$id);
@@ -131,5 +138,18 @@ class ControladorRecetas extends ControladorBase {
 		}
 
 		$this->router->redireccionA('/recetas');
+	}
+
+	/**
+	 * Mueve la imagen con el nombre $tmpName a publico/imagenes/$newName
+	 * @param  string $tmpName
+	 * @param  string $newName
+	 * @return string | null
+	 */
+	public function cargarImagen($tmpName, $newName) {
+		if (move_uploaded_file($tmpName, './publico/imagenes/'.$newName)) {
+			return $newName;
+		}
+		return null;
 	}
 }
