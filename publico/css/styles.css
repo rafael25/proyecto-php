@@ -61,3 +61,18 @@
 .controles-receta {
 	margin-top: 10rem;
 }
+
+.recetas-title {
+	font-size: 1.5rem;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.recetas-title a {
+	color: #E64242;
+}
+
+.panel {
+	border-color: #F6D3D3;
+	background-color: #FFF;
+	box-shadow: 5px 5px 0 #F6D3D3;
+}

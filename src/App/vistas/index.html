@@ -2,11 +2,18 @@
 
 	<div class="row">
 		<div class="large-12 columns">
+			<div class="row">
 			<?php foreach ($recetas as $receta) : ?>
-			
-				<a href="/recetas/<?= $receta['id'] ?>"><h4><?= $receta['nombre'] ?></h4></a>
+
+				<div class="large-4 columns">
+					<div class="panel">
+						<a href="/recetas/<?= $receta['id'] ?>"><img src="/publico/imagenes/<?= $receta['imagen'] ?>" alt="<?= $receta['nombre'] ?>"></a>
+						<p><a href="/recetas/<?= $receta['id'] ?>"><h5 class="recetas-title"><?= $receta['nombre'] ?></h5></a></p>
+					</div>
+				</div>
 			
 			<?php endforeach; ?>
+			</div>
 		</div>
 	</div>
 

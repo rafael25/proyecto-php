@@ -63,7 +63,11 @@
 				<label for="imagen">Imagen</label>
 				<input type="file" name="imagen">
 			</p>
-			<p><input type="submit" class="button success tiny radius" name="guardar" value="Guardar"></p>
+			<p>
+				<input type="submit" class="button success tiny radius" name="guardar" value="Guardar">
+				<a href="/recetas/<?= $receta['id'] ?>" class="button alert tiny radius">Cancelar</a>
+
+			</p>
 		</form>
 	</div>
 </div>
