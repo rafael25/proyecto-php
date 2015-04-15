@@ -1,9 +1,13 @@
 /* 
 * @Author: rafael
 * @Date:   2015-03-28 17:04:28
-* @Last Modified by:   Rafael Viveros
-* @Last Modified time: 2015-03-31 15:36:17
+* @Last Modified by:   rafael
+* @Last Modified time: 2015-04-14 21:00:46
 */
+
+body {
+	background-image: url('../imagenes/restaurant_icons.png');
+}
 
 .main-wrapper {
 	margin-top: 1.5rem;
@@ -75,4 +79,13 @@
 	border-color: #F6D3D3;
 	background-color: #FFF;
 	box-shadow: 5px 5px 0 #F6D3D3;
+}
+
+.top-bar {
+	background-color: #E64242;
+	box-shadow: 0 5px 0 #F6D3D3;
+}
+
+.top-bar-section a {
+	background-color: #E64242 !important;
 }
